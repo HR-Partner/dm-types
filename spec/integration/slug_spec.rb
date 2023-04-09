@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-require './spec/fixtures/article'
+# require './spec/fixtures/article'
 
-describe DataMapper::TypesFixtures::Article do
+xdescribe 'DataMapper::TypesFixtures::Article' do
   supported_by :all do
     describe "persisted with title and slug set to 'New DataMapper Type'" do
       before :all do

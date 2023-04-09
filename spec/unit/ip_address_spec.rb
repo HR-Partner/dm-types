@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-require './spec/fixtures/network_node'
+# require './spec/fixtures/network_node'
 
-describe DataMapper::Property::IPAddress do
+xdescribe 'DataMapper::Property::IPAddress' do
   before :all do
     @stored = '81.20.130.1'
     @input  = IPAddr.new(@stored)

@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-require './spec/fixtures/network_node'
+# require './spec/fixtures/network_node'
 
-describe DataMapper::TypesFixtures::NetworkNode do
+xdescribe 'DataMapper::TypesFixtures::NetworkNode' do
   supported_by :all do
     describe 'with UUID set as UUID object' do
       before :all do

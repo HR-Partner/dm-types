@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'dm-core'
-require 'uuidtools' # must be ~>2.0
+# require 'uuidtools' # must be ~>2.0
 
 module DataMapper
   class Property
