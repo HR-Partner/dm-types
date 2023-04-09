@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 begin
   require 'pathname'
   require 'yardstick/rake/measurement'
@@ -11,7 +13,7 @@ begin
     verify.threshold = 100
   end
 rescue LoadError
-  %w[ yardstick_measure verify_measurements ].each do |name|
+  %w[yardstick_measure verify_measurements].each do |name|
     task name.to_s do
       abort "Yardstick is not available. In order to run #{name}, you must: gem install yardstick"
     end

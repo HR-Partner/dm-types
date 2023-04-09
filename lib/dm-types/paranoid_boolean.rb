@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dm-types/paranoid/base'
 
 module DataMapper
@@ -18,6 +20,6 @@ module DataMapper
           default_scope(#{repository_name.inspect}).update(#{property_name} => false)
         RUBY
       end
-    end # class ParanoidBoolean
-  end # module Property
-end # module DataMapper
+    end
+  end
+end

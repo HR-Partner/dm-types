@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Approach
 #
 # We need to detect whether or not the underlying Hash or Array changed and
@@ -75,7 +77,6 @@
 module DataMapper
   class Property
     module DirtyMinder
-
       module Hooker
         MUTATION_METHODS = {
           ::Array => %w{
@@ -90,8 +91,8 @@ module DataMapper
             []= store delete delete_if replace update
             delete rehash shift clear
             merge! reject! select!
-          }.select { |meth| ::Hash.instance_methods.any? { |m| m.to_s == meth } },
-        }
+          }.select { |meth| ::Hash.instance_methods.any? { |m| m.to_s == meth } }
+        }.freeze
 
         def self.extended(instance)
           # FIXME: DirtyMinder is currently unsupported on RBX, because unlike
@@ -103,9 +104,9 @@ module DataMapper
           # forward method invocations we've hooked.  Supporting RBX will
           # require finding another way, possibly for all Rubies.  In the
           # meantime, something is better than nothing.
-          return if defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
 
-          return unless type = MUTATION_METHODS.keys.find { |k| instance.kind_of?(k) }
+          return unless (type = MUTATION_METHODS.keys.find { |k| instance.is_a?(k) })
+
           instance.extend const_get("#{type}Hooks")
         end
 
@@ -141,16 +142,16 @@ module DataMapper
         end
 
         def track(resource, property)
-          @resource, @property = resource, property
+          @resource = resource
+          @property = property
         end
-
-      end # Hooker
+      end
 
       # Catch any direct assignment (#set), and any Resource#reload (set!).
       def set!(resource, value)
         # Do not extend non observed value classes
-        if Hooker::MUTATION_METHODS.keys.detect { |klass| value.kind_of?(klass) }
-          hook_value(resource, value) unless value.kind_of? Hooker
+        if Hooker::MUTATION_METHODS.keys.detect { |klass| value.is_a?(klass) } && !(value.is_a? Hooker)
+          hook_value(resource, value)
         end
         super
       end
@@ -158,12 +159,11 @@ module DataMapper
       private
 
       def hook_value(resource, value)
-        return if value.kind_of? Hooker
+        return if value.is_a? Hooker
 
         value.extend Hooker
         value.track(resource, self)
       end
-
-    end # DirtyMinder
-  end # Property
-end # DataMapper
+    end
+  end
+end

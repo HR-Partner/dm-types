@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'dm-core'
-require 'uuidtools'  # must be ~>2.0
+require 'uuidtools' # must be ~>2.0
 
 module DataMapper
   class Property
@@ -44,7 +46,7 @@ module DataMapper
       length 36
 
       def dump(value)
-        value.to_s unless value.nil?
+        value&.to_s
       end
 
       def load(value)
@@ -57,9 +59,9 @@ module DataMapper
 
       def typecast(value)
         return if value.nil?
+
         load(value)
       end
-
     end
   end
 end

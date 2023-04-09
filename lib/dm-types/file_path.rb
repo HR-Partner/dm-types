@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pathname'
 require 'dm-core'
 
@@ -19,7 +21,6 @@ module DataMapper
       def typecast(value)
         load(value)
       end
-
-    end # class FilePath
-  end # class Property
-end # module DataMapper
+    end
+  end
+end

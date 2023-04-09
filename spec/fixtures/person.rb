@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DataMapper
   module TypesFixtures
     class Person

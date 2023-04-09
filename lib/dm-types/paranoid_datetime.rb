@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dm-types/paranoid/base'
 
 module DataMapper
@@ -17,6 +19,6 @@ module DataMapper
           default_scope(#{repository_name.inspect}).update(#{property_name} => nil)
         RUBY
       end
-    end # class ParanoidDateTime
-  end # module Property
-end # module DataMapper
+    end
+  end
+end

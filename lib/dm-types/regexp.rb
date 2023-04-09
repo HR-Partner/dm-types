@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dm-core'
 
 module DataMapper
@@ -10,13 +12,12 @@ module DataMapper
       end
 
       def dump(value)
-        value.source unless value.nil?
+        value&.source
       end
 
       def typecast(value)
         load(value)
       end
-
     end
   end
 end

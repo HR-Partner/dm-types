@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DataMapper
   class Property
     module Flags
@@ -24,16 +26,14 @@ module DataMapper
         # TODO: document
         # @api public
         def [](*values)
-          if klass = generated_classes[values.flatten]
-            klass
-          else
+          unless (klass = generated_classes[values.flatten])
             klass = ::Class.new(self)
             klass.flags(values)
 
             generated_classes[values.flatten] = klass
 
-            klass
           end
+          klass
         end
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dm-core'
 
 module DataMapper
@@ -12,8 +14,8 @@ module DataMapper
     autoload :IPAddress,          'dm-types/ip_address'
     autoload :Json,               'dm-types/json'
     autoload :Regexp,             'dm-types/regexp'
-    autoload :ParanoidBoolean,    'dm-types/paranoid_boolean'
-    autoload :ParanoidDateTime,   'dm-types/paranoid_datetime'
+    # autoload :ParanoidBoolean,    'dm-types/paranoid_boolean'
+    # autoload :ParanoidDateTime,   'dm-types/paranoid_datetime'
     autoload :Slug,               'dm-types/slug'
     autoload :UUID,               'dm-types/uuid'
     autoload :URI,                'dm-types/uri'

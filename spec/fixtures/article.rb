@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module DataMapper
   module TypesFixtures
-
     class Article
       #
       # Behaviors
@@ -14,7 +15,7 @@ module DataMapper
 
       property :id,         Serial
 
-      property :title,      String, :length => 255
+      property :title,      String, length: 255
       property :body,       Text
 
       property :created_at,   DateTime
@@ -28,8 +29,8 @@ module DataMapper
       #
 
       before :valid? do
-        self.slug = self.title
+        self.slug = title
       end
-    end # Article
+    end
   end
 end

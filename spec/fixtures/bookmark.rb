@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module DataMapper
   module TypesFixtures
-
     class Bookmark
       #
       # Behaviors
@@ -14,10 +15,10 @@ module DataMapper
 
       property :id, Serial
 
-      property :title,  String, :length => 255
+      property :title,  String, length: 255
       property :shared, Boolean
       property :uri,    URI
       property :tags,   Yaml
-    end # Bookmark
+    end
   end
 end

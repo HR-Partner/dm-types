@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gemspec
 
 DM_VERSION     = '~> 1.3.0.beta'
 DO_VERSION     = '~> 0.10.15'
-DM_DO_ADAPTERS = %w[sqlite postgres mysql oracle sqlserver]
+DM_DO_ADAPTERS = %w[sqlite postgres mysql oracle sqlserver].freeze
 GIT_BRANCH     = ENV.fetch('GIT_BRANCH', 'master')
 
 gem 'dm-core', DM_VERSION, github: 'datamapper/dm-core', branch: GIT_BRANCH

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dm-core'
 require 'dm-types/support/dirty_minder'
 require 'multi_json'
@@ -13,7 +15,7 @@ module DataMapper
         elsif value.is_a?(::String)
           typecast(value)
         else
-          raise ArgumentError.new("+value+ of a property of JSON type must be nil or a String")
+          raise ArgumentError, '+value+ of a property of JSON type must be nil or a String'
         end
       end
 
@@ -36,14 +38,12 @@ module DataMapper
       end
 
       def value_loaded?(value)
-        value.kind_of?(::Array) || value.kind_of?(::Hash)
+        value.is_a?(::Array) || value.is_a?(::Hash)
       end
 
       include ::DataMapper::Property::DirtyMinder
-
-    end # class Json
+    end
 
     JSON = Json
-
-  end # class Property
-end # module DataMapper
+  end
+end

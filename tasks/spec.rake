@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 spec_defaults = lambda do |spec|
   spec.pattern    = 'spec/**/*_spec.rb'
   spec.libs      << 'lib' << 'spec'
   spec.spec_opts << '--loadby random'
-  spec.spec_opts << '-c' if RUBY_VERSION < '2.2'
 end
 
 begin
@@ -25,15 +26,15 @@ begin
     rcov.rcov_opts = File.read('spec/rcov.opts').split(/\s+/)
   end
 
-  RCov::VerifyTask.new(:verify_rcov => :rcov) do |rcov|
+  RCov::VerifyTask.new(verify_rcov: :rcov) do |rcov|
     rcov.threshold = 100
   end
 rescue LoadError
-  %w[ rcov verify_rcov ].each do |name|
+  %w[rcov verify_rcov].each do |name|
     task name do
       abort "rcov is not available. In order to run #{name}, you must: gem install rcov"
     end
   end
 end
 
-task :default => :spec
+task default: :spec

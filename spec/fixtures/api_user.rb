@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module DataMapper
   module TypesFixtures
     class APIUser
-
       include DataMapper::Resource
 
       property :id, Serial

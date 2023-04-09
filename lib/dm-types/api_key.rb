@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dm-core'
 
 require 'digest/sha1'
@@ -5,7 +7,6 @@ require 'digest/sha1'
 module DataMapper
   class Property
     class APIKey < String
-
       # The amount of random seed data to use to generate tha API Key
       PADDING = 256
 
@@ -23,7 +24,7 @@ module DataMapper
         sha1 = Digest::SHA1.new
 
         PADDING.times { sha1 << rand(256).chr }
-        return sha1.hexdigest
+        sha1.hexdigest
       end
     end
   end

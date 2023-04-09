@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 require 'addressable/uri'
 require 'dm-core'
 
 module DataMapper
   class Property
     class URI < String
+      # allow_nil false
       load_as Addressable::URI
 
       # Maximum length chosen based on recommendation:
@@ -11,18 +14,21 @@ module DataMapper
       length 2083
 
       def load(value)
+        return if value.nil?
+
         uri = Addressable::URI.parse(value)
-        uri.normalize unless uri.nil?
+        uri&.normalize
       end
 
       def dump(value)
-        value.to_str unless value.nil?
+        value&.to_str
       end
 
       def typecast(value)
-        load(value) unless value.nil?
-      end
+        return if value.nil?
 
-    end # class URI
-  end # class Property
-end # module DataMapper
+        load(value)
+      end
+    end
+  end
+end

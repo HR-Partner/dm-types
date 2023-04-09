@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dm-core'
 require 'dm-types/support/flags'
 
@@ -37,29 +39,29 @@ module DataMapper
       end
 
       def dump(value)
-        unless value.nil?
-          flags = Array(value).map { |flag| flag.to_sym }
-          flags.uniq!
+        return if value.nil?
 
-          flag = 0
+        flags = Array(value).map(&:to_sym)
+        flags.uniq!
 
-          flag_map.invert.values_at(*flags).each do |i|
-            next if i.nil?
-            flag += (1 << i)
-          end
+        flag = 0
 
-          flag
+        flag_map.invert.values_at(*flags).each do |i|
+          next if i.nil?
+
+          flag += (1 << i)
         end
+
+        flag
       end
 
       def typecast(value)
         case value
-          when nil     then nil
-          when ::Array then value.map { |v| v.to_sym }
-          else [value.to_sym]
+        when nil     then nil
+        when ::Array then value.map(&:to_sym)
+        else [value.to_sym]
         end
       end
-
-    end # class Flag
-  end # class Property
-end # module DataMapper
+    end
+  end
+end

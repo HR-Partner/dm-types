@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'yaml'
 require 'safe_yaml'
 require 'dm-core'
@@ -33,7 +35,6 @@ module DataMapper
       end
 
       include ::DataMapper::Property::DirtyMinder
-
-    end # class Yaml
-  end # class Property
-end # module DataMapper
+    end
+  end
+end

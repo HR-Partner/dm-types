@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ipaddr'
 require 'dm-core'
 
@@ -12,24 +14,23 @@ module DataMapper
         if value.nil? || value_loaded?(value)
           value
         elsif value.is_a?(::String)
-          unless value.empty?
-            IPAddr.new(value)
+          if value.empty?
+            IPAddr.new('0.0.0.0')
           else
-            IPAddr.new("0.0.0.0")
+            IPAddr.new(value)
           end
         else
-          raise ArgumentError.new("+value+ must be nil or a String")
+          raise ArgumentError, '+value+ must be nil or a String'
         end
       end
 
       def dump(value)
-        value.to_s unless value.nil?
+        value&.to_s
       end
 
       def typecast(value)
         load(value) unless value.nil?
       end
-
-    end # class IPAddress
-  end # module Property
-end # module DataMapper
+    end
+  end
+end
