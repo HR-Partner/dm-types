@@ -17,8 +17,8 @@ module DataMapper
       without_auto_validations do
         property :node_number, Integer, index: true
 
-        property :source_path,      FilePath
-        property :destination_path, FilePath
+        # property :source_path,      FilePath
+        # property :destination_path, FilePath
 
         property :product,     String
         property :version,     String

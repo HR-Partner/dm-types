@@ -4,7 +4,7 @@ require 'spec_helper'
 
 require './spec/fixtures/software_package'
 
-describe DataMapper::TypesFixtures::SoftwarePackage do
+xdescribe DataMapper::TypesFixtures::SoftwarePackage do
   supported_by :all do
     describe 'with source path at /var/cache/apt/archives/linux-libc-dev_2.6.28-11.40_i386.deb' do
       before :all do

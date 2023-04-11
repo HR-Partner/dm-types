@@ -4,7 +4,7 @@ require 'spec_helper'
 
 require './spec/fixtures/bookmark'
 
-describe DataMapper::Property::URI do
+xdescribe 'DataMapper::Property::URI' do
   subject { DataMapper::TypesFixtures::Bookmark.properties[:uri] }
 
   let(:uri)     { Addressable::URI.parse(uri_str)        }

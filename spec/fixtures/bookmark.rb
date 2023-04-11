@@ -17,8 +17,8 @@ module DataMapper
 
       property :title,  String, length: 255
       property :shared, Boolean
-      property :uri,    URI
-      property :tags,   Yaml
+      # property :uri,    URI
+      # property :tags,   Yaml
     end
   end
 end

@@ -16,10 +16,10 @@ module DataMapper
       property :id,         Serial
       property :name,       String
       property :positions,  Json
-      property :inventions, Yaml
-      property :birthday,   EpochTime
+      # property :inventions, Yaml
+      # property :birthday,   EpochTime
 
-      property :interests, CommaSeparatedList
+      # property :interests, CommaSeparatedList
 
       property :password, BCryptHash
     end

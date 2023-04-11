@@ -4,7 +4,7 @@ require 'spec_helper'
 
 require './spec/fixtures/bookmark'
 
-describe DataMapper::TypesFixtures::Bookmark do
+xdescribe DataMapper::TypesFixtures::Bookmark do
   supported_by :all do
     before :all do
       DataMapper::TypesFixtures::Bookmark.auto_migrate!

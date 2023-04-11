@@ -25,7 +25,7 @@ Gem::Specification.new do |gem|
   # gem.add_runtime_dependency('stringex', '>= 2.0.8')
   # gem.add_runtime_dependency('uuidtools', '~> 2.1.2')
 
-  gem.add_development_dependency('rake',  '~> 0.9.2')
+  gem.add_development_dependency('rake',  '~> 12.3.3')
   gem.add_development_dependency('rspec', '~> 3.12.0')
   gem.add_development_dependency('rspec-core', '~> 3.12.0')
 end

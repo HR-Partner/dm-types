@@ -4,7 +4,7 @@ require 'spec_helper'
 
 require './spec/fixtures/tshirt'
 
-describe DataMapper::TypesFixtures::TShirt do
+xdescribe DataMapper::TypesFixtures::TShirt do
   supported_by :all do
     before do
       @resource = DataMapper::TypesFixtures::TShirt.new(

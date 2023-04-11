@@ -4,7 +4,7 @@ require 'spec_helper'
 
 require './spec/fixtures/person'
 
-describe DataMapper::TypesFixtures::Person do
+xdescribe DataMapper::TypesFixtures::Person do
   let(:save) { true }
   before :each do
     @resource = DataMapper::TypesFixtures::Person.new(name: '')

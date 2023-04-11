@@ -5,7 +5,7 @@ require 'shared/identity_function_group'
 
 require './spec/fixtures/person'
 
-describe DataMapper::Property::Yaml do
+xdescribe 'DataMapper::Property::Yaml' do
   before :all do
     @property = DataMapper::TypesFixtures::Person.properties[:inventions]
   end

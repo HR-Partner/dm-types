@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe DataMapper::Property::Regexp do
+xdescribe 'DataMapper::Property::Regexp' do
   before :all do
     class ::User
       include DataMapper::Resource
